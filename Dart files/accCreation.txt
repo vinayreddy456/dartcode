@@ -1,0 +1,77 @@
+// To parse this JSON data, do
+//
+//     final welcome = welcomeFromJson(jsonString);
+
+import 'dart:convert';
+
+Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+
+String welcomeToJson(Welcome data) => json.encode(data.toJson());
+
+class Welcome {
+    Welcome({
+        this.id,
+        this.username,
+        this.email,
+        this.contact,
+        this.password,
+        this.numberofHostels,
+        this.hostelName,
+        this.category,
+        this.price,
+        this.roomType,
+    });
+
+    Id id;
+    String username;
+    String email;
+    String contact;
+    String password;
+    String numberofHostels;
+    String hostelName;
+    String category;
+    int price;
+    String roomType;
+
+    factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+        id: Id.fromJson(json["_id"]),
+        username: json["username"],
+        email: json["email"],
+        contact: json["contact"],
+        password: json["password"],
+        numberofHostels: json["numberofHostels"],
+        hostelName: json["hostelName"],
+        category: json["category"],
+        price: json["Price"],
+        roomType: json["roomType"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "_id": id.toJson(),
+        "username": username,
+        "email": email,
+        "contact": contact,
+        "password": password,
+        "numberofHostels": numberofHostels,
+        "hostelName": hostelName,
+        "category": category,
+        "Price": price,
+        "roomType": roomType,
+    };
+}
+
+class Id {
+    Id({
+        this.oid,
+    });
+
+    String oid;
+
+    factory Id.fromJson(Map<String, dynamic> json) => Id(
+        oid: json["\u0024oid"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "\u0024oid": oid,
+    };
+}
