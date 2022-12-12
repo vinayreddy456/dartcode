@@ -1,0 +1,12 @@
+const mongoose = require('mongoose');
+const blogSchema = new mongoose.Schema([{
+  phone number:{
+   type: Number,
+    required:true
+  } ,  
+  UPI app:{
+    type: String,
+    required:true
+},
+}]);
+module.exports= mongoose.model('register', blogSchema);
